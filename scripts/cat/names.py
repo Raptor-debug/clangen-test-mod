@@ -281,6 +281,19 @@ class Name:
             return (
                 self.prefix + self.names_dict["special_suffixes"][self.cat.status.rank]
             )
+            if (
+                old_rank in self.names_dict["special_prefixes"]
+                and not self.specprefix_hidden
+            ):
+                return self.prefix + self.names_dict["special_prefixes"][old_rank]
+
+        if (
+            self.cat.status.rank in self.names_dict["special_prefixes"]
+            and not self.specprefix_hidden
+        ):
+            return (
+                self.prefix + self.names_dict["special_prefixes"][self.cat.status.rank]
+            )
         if constants.CONFIG["fun"]["april_fools"]:
             return f"{self.prefix}egg"
         return self.prefix + self.suffix
